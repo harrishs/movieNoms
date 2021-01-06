@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 function App() {
   const [keyWord, setKeyWord] = useState("");
   const [finalWord, setFinalWord] = useState("");
   const [results, setResults] = useState();
 
-  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&t=${finalWord}`;
+  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${finalWord}`;
 
   const entryHandler = e => {
     setKeyWord(e.target.value);
@@ -14,7 +14,6 @@ function App() {
   const handleSearch = event => {
     event.preventDefault();
     setFinalWord(keyWord);
-    runFetch(apiUrl);
   }
 
   const runFetch = apiUrl => {
@@ -25,6 +24,11 @@ function App() {
       setResults(data);
     })
   }
+
+  useEffect(() => {
+    console.log(apiUrl);
+    runFetch(apiUrl);
+  }, [finalWord])
 
   return (
     <div className="App">
