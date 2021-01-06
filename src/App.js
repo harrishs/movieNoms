@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
 
 function App() {
+  const [keyWord, setKeyWord] = useState("");
+  const [finalWord, setFinalWord] = useState("");
+  const [results, setResults] = useState();
+
+  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&t=${finalWord}`;
+
+  const entryHandler = e => {
+    setKeyWord(e.target.value);
+  }
+
+  const handleSearch = event => {
+    event.preventDefault();
+    setFinalWord(keyWord);
+    runFetch(apiUrl);
+  }
+
+  const runFetch = apiUrl => {
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setResults(data);
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={handleSearch} >
+        <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
+      </form>
     </div>
   );
 }
