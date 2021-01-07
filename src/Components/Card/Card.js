@@ -11,8 +11,11 @@ const Card = props => {
                 <h3>IMDB Id: {props.imdbID}</h3>
             </div>
             <form>
-                <button onClick={() => props.addNomination(props.title, props.imdbID)}>Nominate</button>
-                <button>Remove Nomination</button>
+                <button onClick={(event) => {
+                    event.preventDefault();
+                    return props.Nomination(props.title, props.year, "add");
+                    }
+                }>Nominate</button>
             </form>
         </div>
     )
