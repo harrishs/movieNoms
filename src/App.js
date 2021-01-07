@@ -18,30 +18,36 @@ function App() {
     setFinalWord(keyWord);
   }
 
-  const runFetch = apiUrl => {
-    if (finalWord){
-      fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.Search);
-        setResults(data.Search);
-      })
+  useEffect(() => {
+    const runFetch = apiUrl => {
+      if (finalWord){
+        fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.Search);
+          setResults(data.Search);
+        })
+      } else {
+        setResults();
+      }
     }
-  }
+    console.log(apiUrl);
+    runFetch(apiUrl);
+  }, [apiUrl, finalWord])
 
-  let output = null;
+  let output = (
+    <div>
+      <h1>No Results</h1>
+    </div>
+  );
+
   if (results) {
       output = results.map(result => {
         return (
-          <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} />
+          <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} />
         )
       })
     }
-
-  useEffect(() => {
-    console.log(apiUrl);
-    runFetch(apiUrl);
-  }, [apiUrl])
 
   return (
     <div className="App">

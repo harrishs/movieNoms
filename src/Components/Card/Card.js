@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = props => {
     return (
-        <div>
+        <div key={props.imdbID}>
             <div>
                 <img src={props.poster} alt={props.title}/>
             </div>
