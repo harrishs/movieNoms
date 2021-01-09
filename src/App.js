@@ -7,9 +7,10 @@ import NominationContainer from "./Components/Nominations/NominationContainer"
 
 function App() {
   const [keyWord, setKeyWord] = useState("");
-  const [finalWord, setFinalWord] = useState("");
+  const [finalWord, setFinalWord] = useState(null);
   const [results, setResults] = useState();
   const [load, setLoad] = useState(false);
+  const [maxPage, setMaxPage] = useState(1);
 
   const [nominations] = useContext(NominationContext);
 
@@ -26,7 +27,6 @@ function App() {
 
   let reloader = (cb, title, year) => {
     cb(title, year);
-    let updateResults = results;
     console.log(nominations);
     setLoad(!load);
   }
@@ -37,7 +37,8 @@ function App() {
         fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-          console.log(data.Search);
+          console.log(Math.ceil(data.totalResults / 10));
+          setMaxPage(Math.ceil(data.totalResults / 10));
           setResults(data.Search);
         })
       } else {
@@ -48,7 +49,12 @@ function App() {
       runFetch(apiUrl);
   }, [apiUrl, finalWord]);
 
-  let output = <h1>No Results</h1>;
+  let output;
+  let message;
+  if (finalWord !== null){
+    output = <h1>No Results</h1>;
+    message = <h1>Results for "{keyWord}"</h1>
+  }
 
   if (results) {
       output = results.map(result => {
@@ -75,6 +81,7 @@ function App() {
           <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
         </form>
         <div>
+        {message}
         {output}
         </div>
         <NominationContainer count={nominations.count}>

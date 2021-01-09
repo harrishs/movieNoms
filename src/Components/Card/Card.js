@@ -6,7 +6,6 @@ const Card = props => {
     const [nominated, setNominated] = useState(false);
 
     const nominationHandler = (title, year) => {
-        // setNominated(true);
         //add nomination
           if (nominations.count < 5){
             if (nominations.count === 4){
@@ -21,12 +20,14 @@ const Card = props => {
           }
       }    
 
+      //Check if nominated and if so disable button
       if (nominations[props.title]){
         if (!nominated){
           setNominated(true);
         }
       }
 
+      //Check if not nominated and if so do not disable button
       if (!nominations[props.title]){
         if (nominated) {
           setNominated(false);
