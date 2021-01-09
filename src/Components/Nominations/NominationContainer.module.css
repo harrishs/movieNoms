@@ -1,0 +1,37 @@
+.NominationContainer {
+  box-sizing: border-box;
+  height: 100%;
+  width: 50%;
+  background-color: orange;
+  text-align: center;
+  margin: 0 auto;
+  transition: transform 0.3s ease-out;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+}
+
+.Count {
+  margin-top: -5px;
+  padding: 0;
+}
+
+.Nominations {
+  display: flex;
+  flex-direction: column;
+}
+
+.Open {
+  transform: translateX((0));
+}
+
+.Close {
+  transform: translateX(-90%);
+}
+
+.icon {
+  position: relative;
+  top: 50%;
+  left: 45%;
+}

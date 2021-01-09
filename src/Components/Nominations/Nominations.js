@@ -1,6 +1,8 @@
 import React, {useContext} from "react";
 import {NominationContext} from "../../NominationContext";
 
+import classes from "./Nominations.module.css";
+
 const Nominations = props => {
     const [nominations, setNominations] = useContext(NominationContext);
 
@@ -20,7 +22,7 @@ const Nominations = props => {
     }    
 
     return (
-        <div>
+        <div className={classes.Nomination}>
             <h1>{props.title} ({props.year})</h1>
             <button onClick={() => props.reload(nominationHandler, props.title)}>Remove Nomination</button>
         </div>
