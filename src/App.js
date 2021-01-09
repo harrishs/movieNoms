@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from "react";
 import Card from "./Components/Card/Card";
 import {NominationContext} from "./NominationContext";
 import Nominations from "./Components/Nominations/Nominations";
+import NominationContainer from "./Components/Nominations/NominationContainer"
 
 function App() {
   const [keyWord, setKeyWord] = useState("");
@@ -25,6 +26,8 @@ function App() {
 
   let reloader = (cb, title, year) => {
     cb(title, year);
+    let updateResults = results;
+    console.log(nominations);
     setLoad(!load);
   }
 
@@ -45,21 +48,14 @@ function App() {
       runFetch(apiUrl);
   }, [apiUrl, finalWord]);
 
-  let output;
+  let output = <h1>No Results</h1>;
 
-  if (finalWord) {
-    output =  (
-    <div>
-      <h1>No Results</h1>
-    </div>
-    )
-    if (results) {
+  if (results) {
       output = results.map(result => {
         return (
-          <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} nomination={result.nomination} reload={reloader}/>
+          <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} nomination={result.nomination} reload={reloader} />
         )
       })
-    }
   }
 
   let renderNoms;
@@ -78,9 +74,12 @@ function App() {
         <form onSubmit={handleSearch} >
           <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
         </form>
+        <div>
         {output}
-        <div>Number of Nominations: {nominations.count}</div>
+        </div>
+        <NominationContainer count={nominations.count}>
         {renderNoms}
+        </NominationContainer>
       </div>
   );
 }
