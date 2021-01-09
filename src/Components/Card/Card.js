@@ -30,7 +30,7 @@ const Card = props => {
                 <h1>{props.title} ({props.year})</h1>
                 <h3>IMDB Id: {props.imdbID}</h3>
             </div>
-            <button onClick={() => nominationHandler(props.title, props.year)}
+            <button onClick={() => props.reload(nominationHandler, props.title, props.year)}
             disabled={nominated}
             >Nominate</button>
         </div>

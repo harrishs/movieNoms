@@ -19,22 +19,10 @@ const Nominations = props => {
           }
     }    
 
-    let renderNominations = Object.entries(nominations).map(nomination => {
-        if (nomination[0] !== "count"){
-            return (<div key={nomination[0]}>
-                {/* nomination[0] == title, nomination[1] == year */}
-                <h1>{nomination[0]} ({nomination[1]})</h1>
-                <button onClick={() => nominationHandler(nomination[0])}>Remove Nomination</button>
-            </div>)
-        } else {
-            return null
-        }
-    })
-
     return (
         <div>
-            <div>Number of Nominations: {nominations.count}</div>
-            {renderNominations}
+            <h1>{props.title} ({props.year})</h1>
+            <button onClick={() => props.reload(nominationHandler, props.title)}>Remove Nomination</button>
         </div>
     )
 }
