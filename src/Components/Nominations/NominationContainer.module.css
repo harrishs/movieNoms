@@ -10,10 +10,11 @@
   left: 0;
   top: 0;
   z-index: 200;
+  padding-right: 30px;
 }
 
 .Count {
-  margin-top: -5px;
+  margin-top: 25px;
   padding: 0;
 }
 
@@ -31,7 +32,13 @@
 }
 
 .icon {
-  position: relative;
+  position: absolute;
   top: 50%;
-  left: 45%;
+  right: 5px;
+}
+
+@media (max-width: 1000px) {
+  .NominationContainer {
+    width: 90%;
+  }
 }
