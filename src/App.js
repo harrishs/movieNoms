@@ -37,19 +37,22 @@ function App() {
     runFetch(apiUrl);
   }, [apiUrl, finalWord])
 
-  let output = (
+  let output;
+
+  if (finalWord) {
+    output =  (
     <div>
       <h1>No Results</h1>
     </div>
-  );
-
-  if (results) {
+    )
+    if (results) {
       output = results.map(result => {
         return (
           <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} />
         )
       })
     }
+  }
 
   return (
     <NominationProvider>

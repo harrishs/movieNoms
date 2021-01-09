@@ -4,8 +4,6 @@ import {NominationContext} from "../../NominationContext";
 const Nominations = props => {
     const [nominations, setNominations] = useContext(NominationContext);
 
-    const nominationCount = nominations.count;
-    const nominationArray = Object.entries(nominations);
     //remove nomination
     const nominationHandler = (title) => { 
           if (nominations.count <= 5){
@@ -21,12 +19,12 @@ const Nominations = props => {
           }
     }    
 
-    let renderNominations = nominationArray.map(nomination => {
+    let renderNominations = Object.entries(nominations).map(nomination => {
         if (nomination[0] !== "count"){
             return (<div key={nomination[0]}>
                 {/* nomination[0] == title, nomination[1] == year */}
                 <h1>{nomination[0]} ({nomination[1]})</h1>
-                <button onClick={nominationHandler(nomination[0])}>Remove Nomination</button>
+                <button onClick={() => nominationHandler(nomination[0])}>Remove Nomination</button>
             </div>)
         } else {
             return null
@@ -35,7 +33,7 @@ const Nominations = props => {
 
     return (
         <div>
-            <div key="count">Number of Nominations: {nominationCount}</div>
+            <div>Number of Nominations: {nominations.count}</div>
             {renderNominations}
         </div>
     )
