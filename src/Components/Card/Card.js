@@ -1,6 +1,8 @@
 import React, {useContext, useState} from "react";
 import {NominationContext} from "../../NominationContext";
 
+import classes from "./Card.module.css";
+
 const Card = props => {
     const [nominations, setNominations] = useContext(NominationContext);
     const [nominated, setNominated] = useState(false);
@@ -35,10 +37,10 @@ const Card = props => {
       }
 
     return (
-        <div>
-            {/* <div>
+        <div className={classes.Card}>
+            <div>
                 <img src={props.poster} alt={props.title}/>
-            </div> */}
+            </div>
             <div>
                 <h1>{props.title} ({props.year})</h1>
                 <h3>IMDB Id: {props.imdbID}</h3>

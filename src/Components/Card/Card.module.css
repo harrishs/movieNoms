@@ -1,0 +1,26 @@
+.Card {
+  box-sizing: border-box;
+  width: calc(100% / 3);
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.Card img {
+  width: 80%;
+  height: 400px;
+}
+
+@media (max-width: 1000px) {
+  .Card {
+    width: calc(100% / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .Card {
+    width: 100%;
+  }
+  .Card img {
+    width: 90%;
+  }
+}
