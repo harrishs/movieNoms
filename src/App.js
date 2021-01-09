@@ -15,7 +15,8 @@ function App() {
   const [maxPage, setMaxPage] = useState(1);
   const [page, setPage] = useState(1);
 
-  const [nominations] = useContext(NominationContext);
+  const [nominations, setNominations] = useContext(NominationContext);
+
 
   let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${finalWord}`;
 
@@ -30,6 +31,7 @@ function App() {
 
   let reloader = (cb, title, year) => {
     cb(title, year);
+    localStorage.setItem("nominations", JSON.stringify(nominations));
     console.log(nominations);
     setLoad(!load);
   }
@@ -49,6 +51,12 @@ function App() {
       }
     }
       console.log(apiUrl);
+      let noms = JSON.parse(localStorage.getItem("nominations"));
+      if (noms){
+        if (noms.count >= 1){
+          setNominations(noms);
+        }
+      }
       runFetch(apiUrl);
   }, [apiUrl, finalWord]);
 

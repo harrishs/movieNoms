@@ -8,7 +8,6 @@ const NominationHolder = props => {
     const [toggle, setToggle] = useState(false);
 
     const toggleHandler = () => {
-        console.log(toggle);
         setToggle(!toggle);
     }
 
