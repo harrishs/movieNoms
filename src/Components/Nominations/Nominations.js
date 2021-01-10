@@ -7,13 +7,13 @@ const Nominations = props => {
     const [nominations, setNominations] = useContext(NominationContext);
 
     //remove nomination
-    const nominationHandler = (title) => { 
+    const nominationHandler = (id) => { 
           if (nominations.count <= 5){
             if (nominations.count <= 0){
               alert("You have no nominations");
             }
             let removeNominations = nominations;
-            delete removeNominations[title];
+            delete removeNominations[id];
             removeNominations.count -= 1;
             setNominations(removeNominations);
           } else {
@@ -24,7 +24,7 @@ const Nominations = props => {
     return (
         <div className={classes.Nomination}>
             <h1>{props.title} ({props.year})</h1>
-            <button onClick={() => props.reload(nominationHandler, props.title)}>Remove Nomination</button>
+            <button onClick={() => props.reload(nominationHandler, props.imdbID)}>Remove Nomination</button>
         </div>
     )
 }

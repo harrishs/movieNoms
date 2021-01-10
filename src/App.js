@@ -33,8 +33,8 @@ function App() {
   }
 
   //Change state to rerender nominations and cards, add nominations to localstorage
-  const reloader = (cb, title, year) => {
-    cb(title, year);
+  const reloader = (cb, data) => {
+    cb(data);
     localStorage.setItem("nominations", JSON.stringify(nominations));
     setLoad(!load);
   }
@@ -71,6 +71,7 @@ function App() {
         }
       }
       runFetch(apiUrl);
+      console.log(nominations);
   }, [apiUrl, finalWord, setNominations]);
 
   let output = <h1>Search & Nominate 5 Movies</h1>;
@@ -100,7 +101,7 @@ function App() {
   if (nominations) {
     renderNoms = Object.entries(nominations).map(nomination => {
       if (nomination[0] !== "count"){
-        return <Nominations key={nomination[0]} title={nomination[0]} year={nomination[1]} reload={reloader}/>
+        return <Nominations key={nomination[0]} title={nomination[1][0]} year={nomination[1][1]} reload={reloader}/>
       } else {
           return null
       }
@@ -136,7 +137,12 @@ function App() {
   }
 
   if (nominations.count === 5) {
-      main = <div className={classes.Five}>
+      main = (<>
+      <form onSubmit={handleSearch}  className={classes.Search}>
+        <SearchIcon className={classes.searchIcon} />
+        <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
+      </form>
+      <div className={classes.Five}>
       <h1>5 Movies Have Been Nominated</h1>
       <form onSubmit={(e) => {
         e.preventDefault();
@@ -152,6 +158,7 @@ function App() {
         {renderNoms}
       </NominationContainer>
     </div>
+    </>)
   }
 
   return (
