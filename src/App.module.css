@@ -34,3 +34,25 @@
 .Msg {
   text-align: center;
 }
+
+.Five {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Five input {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.Share {
+  display: block;
+  width: 104%;
+  margin-bottom: 10px;
+  text-align: center;
+}

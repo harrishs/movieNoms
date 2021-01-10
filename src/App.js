@@ -39,6 +39,7 @@ function App() {
     setLoad(!load);
   }
 
+  //Create url endpoint for personalized links with nominations
   const urlGen = (name) => {
     let paramGen = `/${name}`
     for (let nomination of Object.entries(nominations)){
@@ -47,7 +48,6 @@ function App() {
       }
     }
     setParams(paramGen);
-    console.log(paramGen);
   }
 
   useEffect(() => {
@@ -64,7 +64,6 @@ function App() {
         setResults();
       }
     }
-      console.log(apiUrl);
       let noms = JSON.parse(localStorage.getItem("nominations"));
       if (noms){
         if (noms.count >= 1){
@@ -75,30 +74,16 @@ function App() {
   }, [apiUrl, finalWord, setNominations]);
 
   let output = <h1>Search & Nominate 5 Movies</h1>;
-  let message;
+  let message = <div className={classes.Msg}>
+  <h1>Nominated {nominations.count} Movies of 5</h1>
+</div>;
+
   if (finalWord !== null){
     output = <h1>No Results</h1>;
-    message = <h1 className={classes.Msg}>Results for "{finalWord}"</h1>
-  }
-
-  let share = <button type="submit">Share Nominations With Friends</button>;
-  if (params) {
-    share = <div>
-      <button type="submit">Share Nominations With Friends</button>
-      <Link to={params}>Copy This Url</Link>
-    </div>
-  }
-  if (nominations.count === 5) {
-    output = <div>
-      <h1 id="finishedNom">5 Movies Have Been Nominated</h1>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        return urlGen(name)
-      }} id="linkGen">
-        <input type="text" name="name" onChange={e => setName(e.target.value)} placeholder="Enter Your Name"/>
-        {share}
-      </form>
-    </div>
+    message = (<div className={classes.Msg}>
+      <h1>Nominated {nominations.count} Movies of 5</h1>
+      <h1>Results for "{finalWord}"</h1>
+    </div>)
   }
 
   //Output result cards for each movie
@@ -132,14 +117,39 @@ function App() {
         <div className={classes.Results}>
         {output}
         </div>
-        <NominationContainer count={nominations.count}>
+        <NominationContainer count={nominations.count} >
         {renderNoms}
         </NominationContainer>
     </>
   )
+
+  let share = <button type="submit">Share Nominations With Friends</button>;
+  if (params) {
+    share = <div>
+      <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
+      <Link className={classes.Share} to={params}>Copy Link Address</Link>
+    </div>
+  }
+
+  if (nominations.count === 5) {
+      main = <div className={classes.Five}>
+      <h1 id="finishedNom">5 Movies Have Been Nominated</h1>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        return urlGen(name)
+      }} id="linkGen">
+        <input type="text" name="name" required onChange={e => setName(e.target.value)} placeholder="Enter Your Name"/>
+        {share}
+      </form>
+      <NominationContainer count={nominations.count} >
+        {renderNoms}
+      </NominationContainer>
+    </div>
+  }
+
   return (
       <div className={classes.App}>
-        <Route path="/" exact render={() => main} />
+        <Route path="/"  exact render={() => main} />
         <Route path="/:name/:nom1/:nom2/:nom3/:nom4/:nom5" component={NominationPage} />
       </div>
   );
