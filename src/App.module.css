@@ -52,7 +52,11 @@
 
 .Share {
   display: block;
-  width: 104%;
+  width: 104% !important;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.Five h1 {
   text-align: center;
 }

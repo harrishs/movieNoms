@@ -1,12 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 
 import classes from "./NominationContainer.module.css"
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Backdrop from "../Backdrop/Backdrop";
+import {NominationContext} from "../../NominationContext";
 
 const NominationHolder = props => {
     const [toggle, setToggle] = useState(false);
+    const [nominations, setNominations] = useContext(NominationContext);
 
     const toggleHandler = () => {
         setToggle(!toggle);
@@ -20,6 +22,11 @@ const NominationHolder = props => {
         toggleIcon = <ChevronLeftIcon onClick={toggleHandler} className={classes.icon}/>
     }
 
+    const clearNominations = () => {
+        localStorage.removeItem("nominations");
+        setNominations({count: 0});
+    }
+
     return (
         <>
         <Backdrop clicked={()=>setToggle(false)} show={toggle}/>
@@ -29,6 +36,7 @@ const NominationHolder = props => {
             <div className={classes.Nominations}>
             {props.children}
             </div>
+            <div className={classes.Clear} onClick={clearNominations}>Clear All Nominations</div>
         </div>
         </>
     )

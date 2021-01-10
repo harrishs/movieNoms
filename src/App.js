@@ -123,7 +123,11 @@ function App() {
     </>
   )
 
-  let share = <button type="submit">Share Nominations With Friends</button>;
+  //Handle messaging for when nominations are full
+  let share = <div>
+  <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
+  <Link className={classes.Share} style={{display: "none"}} to={params}>Copy Link Address</Link>
+</div>
   if (params) {
     share = <div>
       <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
@@ -133,12 +137,15 @@ function App() {
 
   if (nominations.count === 5) {
       main = <div className={classes.Five}>
-      <h1 id="finishedNom">5 Movies Have Been Nominated</h1>
+      <h1>5 Movies Have Been Nominated</h1>
       <form onSubmit={(e) => {
         e.preventDefault();
         return urlGen(name)
-      }} id="linkGen">
-        <input type="text" name="name" required onChange={e => setName(e.target.value)} placeholder="Enter Your Name"/>
+      }}>
+        <input type="text" name="name" required onChange={e => {
+          setParams();
+          setName(e.target.value)
+        }} placeholder="Enter Your Name"/>
         {share}
       </form>
       <NominationContainer count={nominations.count} >

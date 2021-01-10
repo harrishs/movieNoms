@@ -37,6 +37,13 @@
   right: 5px;
 }
 
+.Clear {
+  border: 1px solid black;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
 @media (max-width: 1000px) {
   .NominationContainer {
     width: 90%;
