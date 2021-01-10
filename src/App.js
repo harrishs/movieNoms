@@ -1,22 +1,25 @@
 import React, {useState, useEffect, useContext} from "react";
 import classes from "./App.module.css";
+import {Route, Link} from "react-router-dom";
 
 import Card from "./Components/Card/Card";
 import {NominationContext} from "./NominationContext";
 import Nominations from "./Components/Nominations/Nominations";
 import NominationContainer from "./Components/Nominations/NominationContainer"
 import SearchIcon from '@material-ui/icons/Search';
+import NominationPage from "./Components/Nominations/NominationPage";
 
 function App() {
   const [keyWord, setKeyWord] = useState("");
+  const [name, setName] = useState("");
   const [finalWord, setFinalWord] = useState(null);
   const [results, setResults] = useState();
   const [load, setLoad] = useState(false);
   const [maxPage, setMaxPage] = useState(1);
   const [page, setPage] = useState(1);
+  const [params, setParams] = useState();
 
   const [nominations, setNominations] = useContext(NominationContext);
-
 
   let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${finalWord}`;
 
@@ -29,11 +32,22 @@ function App() {
     setFinalWord(keyWord);
   }
 
-  let reloader = (cb, title, year) => {
+  //Change state to rerender nominations and cards, add nominations to localstorage
+  const reloader = (cb, title, year) => {
     cb(title, year);
     localStorage.setItem("nominations", JSON.stringify(nominations));
-    console.log(nominations);
     setLoad(!load);
+  }
+
+  const urlGen = (name) => {
+    let paramGen = `/${name}`
+    for (let nomination of Object.entries(nominations)){
+      if (nomination[0] !== "count" ){
+        paramGen += `/${nomination[0]} (${nomination[1]})`;
+      }
+    }
+    setParams(paramGen);
+    console.log(paramGen);
   }
 
   useEffect(() => {
@@ -58,13 +72,33 @@ function App() {
         }
       }
       runFetch(apiUrl);
-  }, [apiUrl, finalWord]);
+  }, [apiUrl, finalWord, setNominations]);
 
-  let output;
+  let output = <h1>Search & Nominate 5 Movies</h1>;
   let message;
   if (finalWord !== null){
     output = <h1>No Results</h1>;
-    message = <h1 className={classes.Msg}>Results for "{keyWord}"</h1>
+    message = <h1 className={classes.Msg}>Results for "{finalWord}"</h1>
+  }
+
+  let share = <button type="submit">Share Nominations With Friends</button>;
+  if (params) {
+    share = <div>
+      <button type="submit">Share Nominations With Friends</button>
+      <Link to={params}>Copy This Url</Link>
+    </div>
+  }
+  if (nominations.count === 5) {
+    output = <div>
+      <h1 id="finishedNom">5 Movies Have Been Nominated</h1>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        return urlGen(name)
+      }} id="linkGen">
+        <input type="text" name="name" onChange={e => setName(e.target.value)} placeholder="Enter Your Name"/>
+        {share}
+      </form>
+    </div>
   }
 
   //Output result cards for each movie
@@ -87,12 +121,12 @@ function App() {
       }
   })
   }
-
-  return (
-      <div className={classes.App}>
+  
+  let main = (
+    <>
         <form onSubmit={handleSearch}  className={classes.Search}>
-          <SearchIcon className={classes.searchIcon} />
-          <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
+        <SearchIcon className={classes.searchIcon} />
+        <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
         </form>
         {message}
         <div className={classes.Results}>
@@ -101,6 +135,12 @@ function App() {
         <NominationContainer count={nominations.count}>
         {renderNoms}
         </NominationContainer>
+    </>
+  )
+  return (
+      <div className={classes.App}>
+        <Route path="/" exact render={() => main} />
+        <Route path="/:name/:nom1/:nom2/:nom3/:nom4/:nom5" component={NominationPage} />
       </div>
   );
 }

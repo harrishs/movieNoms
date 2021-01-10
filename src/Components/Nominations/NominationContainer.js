@@ -12,6 +12,7 @@ const NominationHolder = props => {
         setToggle(!toggle);
     }
 
+    //Open and close side bar and adjust icon
     let toggleClasses = [classes.NominationContainer, classes.Close]
     let toggleIcon = <ChevronRightIcon onClick={toggleHandler} className={classes.icon}/>;
     if (toggle) {

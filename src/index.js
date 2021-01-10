@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {NominationProvider} from "./NominationContext";
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <NominationProvider>
     <App />
     </NominationProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
