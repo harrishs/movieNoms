@@ -25,7 +25,8 @@ body {
 }
 
 .Search input:focus {
-  -webkit-focus-ring-color: #014c3e;
+  border: 1px solid #014c3e;
+  outline: 1px solid #014c3e;
 }
 
 .searchIcon {

@@ -58,11 +58,14 @@ function App() {
           console.log(data);
           setTotalResults(data.totalResults);
           setResults(data.Search);
+          setParams();
         })
       } else {
         setResults();
+        setParams();
       }
     }
+    //Check local storage for nominations and retrieve
       let noms = JSON.parse(localStorage.getItem("nominations"));
       if (noms){
         if (noms.count >= 1){

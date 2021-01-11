@@ -3,6 +3,12 @@
   width: calc(100% / 3);
   text-align: center;
   padding-bottom: 25px;
+  color: rgb(29, 33, 32);
+  transition: transform 0.3s;
+}
+
+.Card:hover {
+  transform: scale(1.05);
 }
 
 .Card img {
