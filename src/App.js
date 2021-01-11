@@ -12,7 +12,6 @@ import NominationPage from "./Components/Nominations/NominationPage";
 function App() {
   const [keyWord, setKeyWord] = useState("");
   const [name, setName] = useState("");
-  const [finalWord, setFinalWord] = useState(null);
   const [results, setResults] = useState();
   const [load, setLoad] = useState(false);
   const [maxPage, setMaxPage] = useState(1);
@@ -21,7 +20,7 @@ function App() {
 
   const [nominations, setNominations] = useContext(NominationContext);
 
-  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${finalWord}`;
+  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}`;
 
   const entryHandler = e => {
     setKeyWord(e.target.value);
@@ -29,7 +28,6 @@ function App() {
 
   const handleSearch = event => {
     event.preventDefault();
-    setFinalWord(keyWord);
   }
 
   //Change state to rerender nominations and cards, add nominations to localstorage
@@ -52,7 +50,7 @@ function App() {
 
   useEffect(() => {
     const runFetch = apiUrl => {
-      if (finalWord){
+      if (keyWord){
         fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -71,19 +69,19 @@ function App() {
         }
       }
       runFetch(apiUrl);
-      console.log(nominations);
-  }, [apiUrl, finalWord, setNominations]);
+  }, [apiUrl, keyWord, setNominations]);
 
-  let output = <h1>Search & Nominate 5 Movies</h1>;
-  let message = <div className={classes.Msg}>
-  <h1>Nominated {nominations.count} of 5 Movies</h1>
-</div>;
+  let output = <div className={classes.Msg}>
+    <h1>Search & Nominate 5 Movies</h1>
+    <h1>Nominations Can Be Viewed By Opening Sidebar</h1>
+  </div>;
+  let message;
 
-  if (finalWord !== null){
+  if (keyWord !== ""){
     output = <h1>No Results</h1>;
     message = (<div className={classes.Msg}>
       <h1>Nominated {nominations.count} of 5 Movies</h1>
-      <h1>Results for "{finalWord}"</h1>
+      <h1>Results for "{keyWord}"</h1>
     </div>)
   }
 
