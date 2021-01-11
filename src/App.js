@@ -76,13 +76,13 @@ function App() {
 
   let output = <h1>Search & Nominate 5 Movies</h1>;
   let message = <div className={classes.Msg}>
-  <h1>Nominated {nominations.count} Movies of 5</h1>
+  <h1>Nominated {nominations.count} of 5 Movies</h1>
 </div>;
 
   if (finalWord !== null){
     output = <h1>No Results</h1>;
     message = (<div className={classes.Msg}>
-      <h1>Nominated {nominations.count} Movies of 5</h1>
+      <h1>Nominated {nominations.count} of 5 Movies</h1>
       <h1>Results for "{finalWord}"</h1>
     </div>)
   }
@@ -101,7 +101,7 @@ function App() {
   if (nominations) {
     renderNoms = Object.entries(nominations).map(nomination => {
       if (nomination[0] !== "count"){
-        return <Nominations key={nomination[0]} title={nomination[1][0]} year={nomination[1][1]} reload={reloader}/>
+        return <Nominations key={nomination[0]} title={nomination[1][0]} year={nomination[1][1]} reload={reloader} imdbID={nomination[0]}/>
       } else {
           return null
       }
@@ -127,7 +127,6 @@ function App() {
   //Handle messaging for when nominations are full
   let share = <div>
   <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
-  <Link className={classes.Share} style={{display: "none"}} to={params}>Copy Link Address</Link>
 </div>
   if (params) {
     share = <div>

@@ -43,7 +43,7 @@ const Card = props => {
             </div>
             <div>
                 <h1>{props.title} ({props.year})</h1>
-                <h3>IMDB Id: {props.imdbID}</h3>
+                <h3>IMDB ID: {props.imdbID}</h3>
             </div>
             <button onClick={() => props.reload(nominationHandler, [props.title, props.year, props.imdbID])}
             disabled={nominated}

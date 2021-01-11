@@ -13,6 +13,7 @@ const Nominations = props => {
               alert("You have no nominations");
             }
             let removeNominations = nominations;
+            console.log(id);
             delete removeNominations[id];
             removeNominations.count -= 1;
             setNominations(removeNominations);
