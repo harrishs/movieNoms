@@ -22,9 +22,9 @@ function App() {
 
   const [nominations, setNominations] = useContext(NominationContext);
 
-  let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}`;
+  let apiUrl = `https://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}`;
   if (page !== 1){
-    apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}&page=${page}`
+    apiUrl = `https://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}&page=${page}`
   }
 
   const entryHandler = e => {
@@ -147,7 +147,7 @@ function App() {
         </Link>
         <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
-        <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
+        <input type="text" placeholder="Movie Name" onChange={entryHandler} />
         </form>
         {message}
         <div className={classes.Results}>
@@ -178,7 +178,7 @@ function App() {
       </Link>
       <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
-        <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
+        <input type="text" placeholder="Movie Name" onChange={entryHandler} />
       </form>
       <div className={classes.Five}>
       <h1>5 Movies Have Been Nominated</h1>
