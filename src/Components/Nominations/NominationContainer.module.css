@@ -2,7 +2,8 @@
   box-sizing: border-box;
   height: 100%;
   width: 60%;
-  background-color: orange;
+  background-color: #014c3e;
+  color: white;
   text-align: center;
   margin: 0 auto;
   transition: transform 0.3s ease-out;
@@ -38,7 +39,7 @@
 }
 
 .Clear {
-  border: 1px solid black;
+  border: 1px solid white;
   width: 50%;
   margin: 0 auto;
   margin-top: 25px;

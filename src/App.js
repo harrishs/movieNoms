@@ -14,7 +14,8 @@ function App() {
   const [name, setName] = useState("");
   const [results, setResults] = useState();
   const [load, setLoad] = useState(false);
-  const [maxPage, setMaxPage] = useState(1);
+  //To get number of pages available for pagination: Math.ceil(totalResults / 10)
+  const [totalResults, setTotalResults] = useState(1);
   const [page, setPage] = useState(1);
   const [params, setParams] = useState();
 
@@ -55,7 +56,7 @@ function App() {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setMaxPage(Math.ceil(data.totalResults / 10));
+          setTotalResults(data.totalResults);
           setResults(data.Search);
         })
       } else {
@@ -73,9 +74,18 @@ function App() {
 
   let output = <div className={classes.Msg}>
     <h1>Search & Nominate 5 Movies</h1>
-    <h1>Nominations Can Be Viewed By Opening Sidebar</h1>
+    <h1>Nominations Can Be Managed By Opening Sidebar</h1>
   </div>;
   let message;
+
+  if (nominations.count >= 1){
+    output = <div className={classes.Msg}>
+      <h1>Nominations Can Be Managed By Opening Sidebar</h1>
+    </div>;
+    message = <div className={classes.Msg}>
+      <h1>Nominated {nominations.count} of 5 Movies</h1>
+    </div>
+  }
 
   if (keyWord !== ""){
     output = <h1>No Results</h1>;

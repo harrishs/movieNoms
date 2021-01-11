@@ -1,3 +1,8 @@
+body {
+  background-color: #faf7ed;
+  color: #014c3e;
+}
+
 .App {
   padding: 0;
   margin: 0 auto;
@@ -14,7 +19,13 @@
 .Search input {
   width: 60%;
   text-align: center;
-  height: 30px;
+  height: 40px;
+  font-size: 26px;
+  color: #014c3e;
+}
+
+.Search input:focus {
+  -webkit-focus-ring-color: #014c3e;
 }
 
 .searchIcon {
@@ -33,6 +44,8 @@
 
 .Msg {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .Five {
