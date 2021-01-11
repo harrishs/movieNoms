@@ -90,3 +90,9 @@ a {
   font-family: "Permanent Marker";
   text-transform: uppercase;
 }
+
+@media (max-width: 500px) {
+  .searchIcon {
+    display: none;
+  }
+}
