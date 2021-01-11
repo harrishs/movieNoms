@@ -43,7 +43,7 @@ function App() {
     let paramGen = `/${name}`
     for (let nomination of Object.entries(nominations)){
       if (nomination[0] !== "count" ){
-        paramGen += `/${nomination[0]} (${nomination[1]})`;
+        paramGen += `/${nomination[1][0]} (${nomination[1][1]})`;
       }
     }
     setParams(paramGen);
