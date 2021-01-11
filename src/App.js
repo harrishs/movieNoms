@@ -8,6 +8,7 @@ import Nominations from "./Components/Nominations/Nominations";
 import NominationContainer from "./Components/Nominations/NominationContainer"
 import SearchIcon from '@material-ui/icons/Search';
 import NominationPage from "./Components/Nominations/NominationPage";
+import Pagination from "./Components/Pagination/Pagination";
 
 function App() {
   const [keyWord, setKeyWord] = useState("");
@@ -22,6 +23,9 @@ function App() {
   const [nominations, setNominations] = useContext(NominationContext);
 
   let apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}`;
+  if (page !== 1){
+    apiUrl = `http://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}&page=${page}`
+  }
 
   const entryHandler = e => {
     setKeyWord(e.target.value);
@@ -29,6 +33,10 @@ function App() {
 
   const handleSearch = event => {
     event.preventDefault();
+  }
+
+  const handlePagination = pg => {
+    setPage(pg);
   }
 
   //Change state to rerender nominations and cards, add nominations to localstorage
@@ -73,7 +81,7 @@ function App() {
         }
       }
       runFetch(apiUrl);
-  }, [apiUrl, keyWord, setNominations]);
+  }, [apiUrl, keyWord, setNominations, page]);
 
   let output = <div className={classes.Msg}>
     <h1>Search & Nominate 5 Movies</h1>
@@ -90,14 +98,20 @@ function App() {
     </div>
   }
 
+  let finalCount = page * 10;
+  if (page * 10 > totalResults){
+    finalCount = totalResults
+  }
   if (keyWord !== ""){
     output = <h1>No Results</h1>;
     message = (<div className={classes.Msg}>
       <h1>Nominated {nominations.count} of 5 Movies</h1>
       <h1>Results for "{keyWord}"</h1>
+      <p>Showing {1 + ((page-1) * 10)} - {finalCount} of {totalResults} Results</p>
     </div>)
   }
 
+  let pagination;
   //Output result cards for each movie
   if (results) {
       output = results.map(result => {
@@ -105,6 +119,7 @@ function App() {
           <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} nomination={result.nomination} reload={reloader} />
         )
       })
+      pagination = <Pagination currentPg={page} maxPg={Math.ceil(totalResults / 10)} pgChange={handlePagination}/>;
   }
 
   //Nomination entries for each nomination
@@ -132,6 +147,7 @@ function App() {
         <NominationContainer count={nominations.count} >
         {renderNoms}
         </NominationContainer>
+        {pagination}
     </>
   )
 

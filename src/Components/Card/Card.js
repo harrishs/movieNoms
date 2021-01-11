@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import {NominationContext} from "../../NominationContext";
 
 import classes from "./Card.module.css";
+import defaultPoster from "../../images/default.jpeg";
 
 const Card = props => {
     const [nominations, setNominations] = useContext(NominationContext);
@@ -36,10 +37,16 @@ const Card = props => {
         }
       }
 
+      //If no poster provided
+      let poster = props.poster;
+      if (props.poster === "N/A") {
+        poster = defaultPoster;
+      }
+
     return (
         <div className={classes.Card}>
             <div>
-                <img src={props.poster} alt={props.title}/>
+                <img src={poster} alt={props.title}/>
             </div>
             <div>
                 <h1>{props.title} ({props.year})</h1>
