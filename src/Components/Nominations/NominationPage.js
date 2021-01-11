@@ -7,6 +7,9 @@ const NominationPage = () => {
 
     return (
         <div className={classes.Page}>
+            <Link to="/">
+            <h1 className={classes.Logo}>The Shoppies</h1>    
+            </Link>
             <h1>{params.name} has nominated these 5 movies</h1>
             <div className={classes.Nominations}>
                 <h1>{params.nom1}</h1>

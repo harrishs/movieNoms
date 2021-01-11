@@ -10,3 +10,12 @@
 .Nominations {
   margin: 25px auto;
 }
+
+.Logo {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 25px;
+  font-family: "Permanent Marker";
+  text-transform: uppercase;
+}

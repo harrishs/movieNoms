@@ -142,6 +142,9 @@ function App() {
   
   let main = (
     <>
+         <Link to="/">
+        <h1 className={classes.Logo}>The Shoppies</h1>    
+        </Link>
         <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
         <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
@@ -170,6 +173,9 @@ function App() {
 
   if (nominations.count === 5) {
       main = (<>
+      <Link to="/">
+        <h1 className={classes.Logo}>The Shoppies</h1>    
+      </Link>
       <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
         <input type="text" placeholder="Search Movie Name" onChange={entryHandler} />
