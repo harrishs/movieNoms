@@ -8,7 +8,7 @@ import {NominationContext} from "../../NominationContext";
 
 const NominationHolder = props => {
     const [toggle, setToggle] = useState(false);
-    const [nominations, setNominations] = useContext(NominationContext);
+    const [, setNominations] = useContext(NominationContext);
 
     const toggleHandler = () => {
         setToggle(!toggle);
