@@ -13,10 +13,13 @@
   z-index: 200;
   padding-right: 75px;
   padding-left: 15px;
+  overflow-y: scroll;
+  margin-bottom: 150px;
+  padding-bottom: 150px;
 }
 
 .Count {
-  margin-top: 25px;
+  margin-top: 50px;
   padding: 0;
 }
 
