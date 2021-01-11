@@ -29,6 +29,7 @@ function App() {
 
   const entryHandler = e => {
     setKeyWord(e.target.value);
+    setPage(1);
   }
 
   const handleSearch = event => {
@@ -119,7 +120,7 @@ function App() {
           <Card title={result.Title} poster={result.Poster} year={result.Year} imdbID={result.imdbID} key={result.imdbID} nomination={result.nomination} reload={reloader} />
         )
       })
-      pagination = <Pagination currentPg={page} maxPg={Math.ceil(totalResults / 10)} pgChange={handlePagination}/>;
+      pagination = <Pagination currentPg={page} maxPg={totalResults ? Math.ceil(totalResults / 10) : 1} pgChange={handlePagination}/>;
       message = (<div className={classes.Msg}>
         <h1>Nominated {nominations.count} of 5 Movies</h1>
         <h1>Results for "{keyWord}"</h1>

@@ -11,7 +11,8 @@
   left: 0;
   top: 0;
   z-index: 200;
-  padding-right: 30px;
+  padding-right: 75px;
+  padding-left: 15px;
 }
 
 .Count {
