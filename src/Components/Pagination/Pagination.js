@@ -14,7 +14,7 @@ const Pagination = props => {
                     setNum(e.target.value.replace(/\D/,''));
                 }}/>
             </form>
-            of {props.maxPg} Pages
+            <span>of {props.maxPg} Pages</span>
         </div>
     )
 }

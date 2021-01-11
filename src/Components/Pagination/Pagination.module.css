@@ -5,7 +5,13 @@
   justify-content: center;
   margin-bottom: 15px;
 }
+
+.Pagination span {
+  margin-top: 5px;
+}
+
 .Pagination input {
   width: 50px;
-  margin-right: 5px;
+  height: 25px;
+  margin-right: 10px;
 }
