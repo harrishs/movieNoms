@@ -102,12 +102,12 @@ function App() {
   if (page * 10 > totalResults){
     finalCount = totalResults
   }
+
   if (keyWord !== ""){
     output = <h1>No Results</h1>;
     message = (<div className={classes.Msg}>
       <h1>Nominated {nominations.count} of 5 Movies</h1>
       <h1>Results for "{keyWord}"</h1>
-      <p>Showing {1 + ((page-1) * 10)} - {finalCount} of {totalResults} Results</p>
     </div>)
   }
 
@@ -120,6 +120,11 @@ function App() {
         )
       })
       pagination = <Pagination currentPg={page} maxPg={Math.ceil(totalResults / 10)} pgChange={handlePagination}/>;
+      message = (<div className={classes.Msg}>
+        <h1>Nominated {nominations.count} of 5 Movies</h1>
+        <h1>Results for "{keyWord}"</h1>
+        <p>Showing {1 + ((page-1) * 10)} - {finalCount} of {totalResults} Results</p>
+      </div>);
   }
 
   //Nomination entries for each nomination
