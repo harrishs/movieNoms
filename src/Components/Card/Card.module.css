@@ -3,7 +3,7 @@
   width: calc(100% / 3);
   text-align: center;
   padding-bottom: 25px;
-  color: rgb(29, 33, 32);
+  color: rgb(54, 58, 52);
   transition: transform 0.3s;
 }
 
@@ -14,6 +14,10 @@
 .Card img {
   width: 80%;
   height: 400px;
+}
+
+.Card h1 {
+  font-size: 30px;
 }
 
 @media (max-width: 1000px) {

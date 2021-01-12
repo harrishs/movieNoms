@@ -1,9 +1,9 @@
 .NominationContainer {
   box-sizing: border-box;
   height: 100%;
-  width: 60%;
-  background-color: #014c3e;
-  color: white;
+  width: 40%;
+  background-color: #4e7632;
+  color: rgb(235, 242, 232);
   text-align: center;
   margin: 0 auto;
   transition: transform 0.3s ease-out;
@@ -11,11 +11,10 @@
   left: 0;
   top: 0;
   z-index: 200;
-  padding-right: 75px;
-  padding-left: 15px;
   overflow-y: scroll;
-  margin-bottom: 50px;
-  padding-bottom: 50px;
+  padding: 0 30px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
 }
 
 .Count {
@@ -52,6 +51,6 @@
 
 @media (max-width: 1000px) {
   .NominationContainer {
-    width: 90%;
+    width: 70%;
   }
 }

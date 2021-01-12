@@ -86,7 +86,7 @@ function App() {
 
   let output = <div className={classes.Msg}>
     <h1>Search & Nominate 5 Movies</h1>
-    <h1>Nominations Can Be Managed By Opening Sidebar</h1>
+    <h1 style={{marginTop: "-10px"}}>Nominations Can Be Managed By Opening Sidebar</h1>
   </div>;
   let message;
 
@@ -108,7 +108,7 @@ function App() {
     output = <h1>No Results</h1>;
     message = (<div className={classes.Msg}>
       <h1>Nominated {nominations.count} of 5 Movies</h1>
-      <h1>Results for "{keyWord}"</h1>
+      <h1 style={{marginTop: "-10px"}}>Results for "{keyWord}"</h1>
     </div>)
   }
 
@@ -123,7 +123,7 @@ function App() {
       pagination = <Pagination currentPg={page} maxPg={totalResults ? Math.ceil(totalResults / 10) : 1} pgChange={handlePagination}/>;
       message = (<div className={classes.Msg}>
         <h1>Nominated {nominations.count} of 5 Movies</h1>
-        <h1>Results for "{keyWord}"</h1>
+        <h1 style={{marginTop: "-10px"}}>Results for "{keyWord}"</h1>
         <p>Showing {1 + ((page-1) * 10)} - {finalCount} of {totalResults} Results</p>
       </div>);
   }
@@ -147,7 +147,7 @@ function App() {
         </Link>
         <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
-        <input type="text" placeholder="Movie Name" onChange={entryHandler} />
+        <input type="text" placeholder="Movie Title" onChange={entryHandler} />
         </form>
         {message}
         <div className={classes.Results}>
@@ -178,7 +178,7 @@ function App() {
       </Link>
       <form onSubmit={handleSearch}  className={classes.Search}>
         <SearchIcon className={classes.searchIcon} />
-        <input type="text" placeholder="Movie Name" onChange={entryHandler} />
+        <input type="text" placeholder="Movie Title" onChange={entryHandler} />
       </form>
       <div className={classes.Five}>
       <h1>5 Movies Have Been Nominated</h1>

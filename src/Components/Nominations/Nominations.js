@@ -24,7 +24,7 @@ const Nominations = props => {
 
     return (
         <div className={classes.Nomination}>
-            <h1>{props.title} ({props.year})</h1>
+            <h3>{props.title} ({props.year})</h3>
             <button onClick={() => props.reload(nominationHandler, props.imdbID)}>Remove Nomination</button>
         </div>
     )

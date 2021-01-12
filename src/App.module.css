@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto&display=swap");
 
 body {
-  background-color: #faf7ed;
-  color: #014c3e;
+  color: rgb(54, 58, 52);
+  background-color: rgb(235, 242, 232);
   font-family: "Roboto";
 }
 
@@ -24,12 +24,12 @@ body {
   text-align: center;
   height: 40px;
   font-size: 26px;
-  color: #014c3e;
+  color: rgb(54, 58, 52);
 }
 
 input:focus {
-  border: 1px solid #014c3e;
-  outline: 1px solid #014c3e;
+  border: 1px solid #4e7632;
+  outline: 1px solid #4e7632;
 }
 
 .searchIcon {
@@ -79,7 +79,8 @@ input:focus {
 }
 
 a {
-  color: #014c3e;
+  color: #4e7632;
+  text-decoration: none;
 }
 
 .Logo {
@@ -88,6 +89,8 @@ a {
   margin: 0 auto;
   margin-top: 25px;
   font-size: 56px;
-  font-family: "Permanent Marker";
   text-transform: uppercase;
+  color: #4e7632;
+  text-decoration: none;
+  font-family: "Architects Daughter";
 }

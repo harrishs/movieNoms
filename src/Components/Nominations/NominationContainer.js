@@ -32,7 +32,7 @@ const NominationHolder = props => {
         <Backdrop clicked={()=>setToggle(false)} show={toggle}/>
         <div className={toggleClasses.join(" ")} onClick={toggleHandler}>
             {toggleIcon}
-            <h1 className={classes.Count}>Number of Nominations: {props.count}/5</h1>
+            <h1 className={classes.Count}>Your Nominations: {props.count}/5</h1>
             <div className={classes.Nominations}>
             {props.children}
             </div>
