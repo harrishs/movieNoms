@@ -5,10 +5,15 @@
   width: 80%;
   text-align: center;
   margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Nominations {
-  margin: 50px auto;
+  margin-top: 50px;
+  margin-bottom: 15px;
 }
 
 .Nominations h1 {
@@ -24,7 +29,7 @@
 
 .Logo {
   text-align: center;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 25px;
   text-transform: uppercase;
@@ -34,7 +39,7 @@
 }
 
 .Create {
-  width: 400px;
+  width: 325px;
   height: 50px;
   font-size: 15px;
   font-weight: bold;
@@ -44,7 +49,7 @@
   background-color: rgb(235, 242, 232);
   transition: transform 0.25s;
   outline: none;
-  margin-top: -10px;
+  margin-bottom: 25px;
 }
 
 .Create:hover {

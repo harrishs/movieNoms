@@ -39,6 +39,7 @@ function App() {
 
   const handlePagination = pg => {
     setPage(pg);
+    window.scrollTo(0,0)
   }
 
   //Change state to rerender nominations and cards, add nominations to localstorage
@@ -87,7 +88,7 @@ function App() {
 
   let output = <div className={classes.Msg}>
     <h1>Search & Nominate 5 Movies</h1>
-    <h1 style={{marginTop: "-10px"}}>Nominations Can Be Managed By Opening Sidebar</h1>
+    <h1 style={{marginTop: "-5px"}}>Nominations Can Be Managed In Sidebar</h1>
   </div>;
   let message;
 
