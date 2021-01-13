@@ -9,6 +9,10 @@ Simple to use interface that makes it easy to:
 - View the list of films already nominated
 - Remove a nominee from the nomination list
 
+### Application in Action
+
+![Application in action](https://github.com/harrishs/movieNoms/blob/main/preview.gif)
+
 ## Requirements
 
 1. Search results should come from OMDB's API.
