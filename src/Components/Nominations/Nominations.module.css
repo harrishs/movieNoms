@@ -2,3 +2,13 @@
   width: 100%;
   text-align: center;
 }
+
+.Remove {
+  height: 40px;
+  width: 200px;
+  outline: none;
+  border: 2px solid rgb(235, 242, 232);
+  font-size: 15px;
+  background-color: #4e7632;
+  color: rgb(235, 242, 232);
+}

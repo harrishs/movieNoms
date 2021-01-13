@@ -94,3 +94,23 @@ a {
   text-decoration: none;
   font-family: "Architects Daughter";
 }
+
+.shareHold button {
+  width: 200px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #4e7632;
+  border-radius: 25px;
+  color: #4e7632;
+  background-color: rgb(235, 242, 232);
+  transition: transform 0.25s;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.shareHold button:hover {
+  transform: scale(1.1);
+  background-color: rgb(184, 211, 177);
+}

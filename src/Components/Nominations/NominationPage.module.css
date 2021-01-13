@@ -8,7 +8,19 @@
 }
 
 .Nominations {
-  margin: 25px auto;
+  margin: 50px auto;
+}
+
+.Nominations h1 {
+  font-family: "Architects Daughter";
+  font-size: 32px;
+}
+
+.Name {
+  margin-bottom: -25px;
+  font-size: 45px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .Logo {
@@ -19,4 +31,24 @@
   text-transform: uppercase;
   color: #4e7632;
   font-family: "Architects Daughter";
+}
+
+.Create {
+  width: 400px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #4e7632;
+  border-radius: 25px;
+  color: #4e7632;
+  background-color: rgb(235, 242, 232);
+  transition: transform 0.25s;
+  outline: none;
+  position: relative;
+  bottom: 0;
+}
+
+.Create:hover {
+  transform: scale(1.1);
+  background-color: rgb(184, 211, 177);
 }

@@ -161,11 +161,11 @@ function App() {
   )
 
   //Handle messaging for when nominations are full
-  let share = <div>
+  let share = <div className={classes.shareHold}>
   <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
 </div>
   if (params) {
-    share = <div>
+    share = <div className={classes.shareHold}>
       <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
       <Link className={classes.Share} to={params}>Copy Link Address</Link>
     </div>

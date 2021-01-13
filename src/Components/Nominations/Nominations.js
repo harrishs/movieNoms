@@ -8,12 +8,8 @@ const Nominations = props => {
 
     //remove nomination
     const nominationHandler = (id) => { 
-          if (nominations.count <= 5){
-            if (nominations.count <= 0){
-              alert("You have no nominations");
-            }
+          if (nominations.count <= 5 && nominations.count >= 1){
             let removeNominations = nominations;
-            console.log(id);
             delete removeNominations[id];
             removeNominations.count -= 1;
             setNominations(removeNominations);
@@ -25,7 +21,7 @@ const Nominations = props => {
     return (
         <div className={classes.Nomination}>
             <h3>{props.title} ({props.year})</h3>
-            <button onClick={() => props.reload(nominationHandler, props.imdbID)}>Remove Nomination</button>
+            <button className={classes.Remove} onClick={() => props.reload(nominationHandler, props.imdbID)}>Remove Nomination</button>
         </div>
     )
 }
