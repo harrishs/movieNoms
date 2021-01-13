@@ -31,4 +31,4 @@ React
 
 - Hooks used to manage state instead of using Redux
 - CSS modules for keeping component styling more organized
-- Delployed using netlify: [https://movienoms.netlify.app](https://movienoms.netlify.app)
+- Deployed using netlify: [https://movienoms.netlify.app](https://movienoms.netlify.app)

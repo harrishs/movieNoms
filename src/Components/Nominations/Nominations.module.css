@@ -1,6 +1,11 @@
 .Nomination {
-  width: 100%;
+  width: 75%;
   text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .Remove {
