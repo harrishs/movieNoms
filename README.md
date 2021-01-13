@@ -9,6 +9,14 @@ Simple to use interface that makes it easy to:
 - View the list of films already nominated
 - Remove a nominee from the nomination list
 
+## Tech Stack
+
+React
+
+- Hooks used to manage state instead of using Redux
+- CSS modules for keeping component styling more organized
+- Deployed using netlify: [https://movienoms.netlify.app](https://movienoms.netlify.app)
+
 ### Application in Action
 
 ![Application in action](https://github.com/harrishs/movieNoms/blob/main/preview.gif)
@@ -28,11 +36,3 @@ Simple to use interface that makes it easy to:
 - Persistant Nomination List Using LocalStorage (Saves nominations if user leaves page)
 - Create shareable nomination link once 5 nominations are selected
 - Pagination and additional messaging
-
-## Tech Stack
-
-React
-
-- Hooks used to manage state instead of using Redux
-- CSS modules for keeping component styling more organized
-- Deployed using netlify: [https://movienoms.netlify.app](https://movienoms.netlify.app)
