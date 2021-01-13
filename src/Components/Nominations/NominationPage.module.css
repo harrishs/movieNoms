@@ -12,13 +12,12 @@
 }
 
 .Nominations h1 {
-  font-family: "Architects Daughter";
-  font-size: 32px;
+  font-size: 26px;
 }
 
 .Name {
   margin-bottom: -25px;
-  font-size: 45px;
+  font-size: 42px;
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -31,6 +30,7 @@
   text-transform: uppercase;
   color: #4e7632;
   font-family: "Architects Daughter";
+  font-size: 56px;
 }
 
 .Create {
@@ -44,8 +44,7 @@
   background-color: rgb(235, 242, 232);
   transition: transform 0.25s;
   outline: none;
-  position: relative;
-  bottom: 0;
+  margin-top: -10px;
 }
 
 .Create:hover {

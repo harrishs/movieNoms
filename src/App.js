@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useRef} from "react";
 import classes from "./App.module.css";
 import {Route, Link} from "react-router-dom";
 
@@ -21,6 +21,7 @@ function App() {
   const [params, setParams] = useState();
 
   const [nominations, setNominations] = useContext(NominationContext);
+  const linkRef = useRef(null);
 
   let apiUrl = `https://www.omdbapi.com/?apikey=29fdc319&type=movie&s=${keyWord}`;
   if (page !== 1){
@@ -49,7 +50,7 @@ function App() {
 
   //Create url endpoint for personalized links with nominations
   const urlGen = (name) => {
-    let paramGen = `/${name}`
+    let paramGen = `${name}`
     for (let nomination of Object.entries(nominations)){
       if (nomination[0] !== "count" ){
         paramGen += `/${nomination[1][0]} (${nomination[1][1]})`;
@@ -160,14 +161,22 @@ function App() {
     </>
   )
 
+  const handleShare = () =>  {
+    linkRef.current.select();
+    document.execCommand("copy");
+    alert("Link Copied To Clipboard");
+  }
   //Handle messaging for when nominations are full
-  let share = <div className={classes.shareHold}>
-  <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
-</div>
+  let share = (<div className={classes.shareHold}>
+  <button  className={classes.Share} type="submit">Generate Link</button>
+  </div>);
+
+  let baseUrl = window.location.href;
+
   if (params) {
     share = <div className={classes.shareHold}>
-      <button  className={classes.Share} type="submit">Share Nominations With Friends</button>
-      <Link className={classes.Share} to={params}>Copy Link Address</Link>
+      <button  className={classes.Share} onClick={handleShare}>Share Nominations With Friends</button>
+      <textarea value={baseUrl + params} ref={linkRef} readOnly/>
     </div>
   }
 
@@ -182,11 +191,11 @@ function App() {
       </form>
       <div className={classes.Five}>
       <h1>5 Movies Have Been Nominated</h1>
-      <form onSubmit={(e) => {
+      <form id="share" onSubmit={(e) => {
         e.preventDefault();
         return urlGen(name)
       }}>
-        <input type="text" name="name" required onChange={e => {
+        <input type="text" required onChange={e => {
           setParams();
           setName(e.target.value)
         }} placeholder="Enter Your Name"/>
